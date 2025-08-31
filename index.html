@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking Rental System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="login-container">
+        
+        <h1 id="app-title">ParkEasy</h1>
+        <div class="form-toggle">
+            <button id="show-login-btn" class="active">Login</button>
+            <button id="show-register-btn">Register</button>
+        </div>
+
+        <form id="login-form">
+            <h2>Parking Rental System Login</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <select id="role" required>
+                <option value="">Select Role</option>
+                <option value="Renter">Renter</option>
+                <option value="Owner">Owner</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <div id="login-error" class="error-message"></div>
+            <button type="submit">Login</button>
+        </form>
+
+        <form id="register-form" style="display: none; flex-direction: column;">
+            <h2>Register New User</h2>
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+            <select id="register-role" required>
+                <option value="">Select Role</option>
+                <option value="Renter">Renter</option>
+                <option value="Owner">Owner</option>
+                
+            </select>
+            <label>
+                Contact Number:
+                <input id="register-contact" name="register-contact" type="tel" placeholder="e.g. +8801XXXXXXXXX" />
+            </label>
+            <div id="register-error" class="error-message"></div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    
+    <div id="app-container" style="display: none;">
+        <div id="user-info">
+            <span id="logged-user"></span>
+            <button id="logout-btn">Logout</button>
+        </div>
+
+        
+        <div id="renter-section" style="display: none;">
+            <h2>Renter Dashboard</h2>
+            <div id="search-listings">
+                <h3>Available Listings</h3>
+                <table id="listings-table">
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Price</th>
+                            <th>Availability</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listings-body"></tbody>
+                </table>
+            </div>
+            <div id="my-bookings">
+                <h3>My Bookings</h3>
+                <table id="bookings-table">
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookings-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        
+        <div id="owner-section" style="display: none;">
+            <h2>Owner Dashboard</h2>
+            <div id="owner-earnings" class="earnings-card">
+                <h3>Total Earnings</h3>
+                <div style="font-size: 24px; font-weight: bold; color: #28a745;">
+                    Tk <span id="total-earnings">0.00</span>
+                </div>
+                <small style="color: #6c757d;">From all confirmed bookings</small>
+            </div>
+            <form id="add-listing-form">
+                <h3>Add New Listing</h3>
+                <input type="text" id="location" placeholder="Location" required>
+                <input type="number" id="price-hourly" placeholder="Hourly Price" step="0.01" required>
+                <input type="number" id="price-daily" placeholder="Daily Price" step="0.01" required>
+                <input type="number" id="price-monthly" placeholder="Monthly Price" step="0.01" required>
+                <select id="availability" required>
+                    <option value="true">Available</option>
+                    <option value="false">Unavailable</option>
+                </select>
+                <button type="submit">Add Listing</button>
+            </form>
+            <div id="owner-listings">
+                <h3>My Listings</h3>
+                <table id="owner-listings-table">
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Hourly Price</th>
+                            <th>Daily Price</th>
+                            <th>Monthly Price</th>
+                            <th>Availability</th>
+                            <th>Bookings</th>
+                        </tr>
+                    </thead>
+                    <tbody id="owner-listings-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        
+        <div id="admin-section" style="display: none;">
+            <h2>Admin Dashboard</h2>
+            <div id="admin-tools">
+                <button id="manage-users-btn">Manage Users</button>
+            </div>
+            <div id="all-listings">
+                <h3>All Listings</h3>
+                <table id="admin-listings-table">
+                    <thead>
+                        <tr>
+                            <th>Owner</th>
+                            <th>Location</th>
+                            <th>Hourly Price</th>
+                            <th>Daily Price</th>
+                            <th>Monthly Price</th>
+                            <th>Availability</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-listings-body"></tbody>
+                </table>
+            </div>
+            <div id="all-bookings">
+                <h3>All Bookings</h3>
+                <table id="admin-bookings-table">
+                    <thead>
+                        <tr>
+                            <th>Renter</th>
+                            <th>Location</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-bookings-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
